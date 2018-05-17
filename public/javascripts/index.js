@@ -75,25 +75,7 @@ $(document).ready(function () {
             labelString: 'Humidity(%)',
             display: true
           },
-          position: 'right',
-        },
-   {
-        id: 'panes',
-        type: 'linear',
-        scaleLabel: {
-          labelString: 'panes',
-          display: true
-        },
-        position: 'right',
-      },
-      {
-        id: 'tortas',
-        type: 'linear',
-        scaleLabel: {
-          labelString: 'tortas',
-          display: true
-        },
-        position: 'right'
+          position: 'right'
       }]
     }
   }
