@@ -2,8 +2,6 @@ $(document).ready(function () {
   var timeData = [],
     temperatureData = [],
     humidityData = [];
-    panesData =[];
-    tortasData = [];
     var data = {
     labels: timeData,
     datasets: [
@@ -18,28 +16,7 @@ $(document).ready(function () {
         pointHoverBorderColor: "rgba(250, 0, 0, 1)",
         data: temperatureData
       },
-      {
-	fill: false,
-        label: 'panes',
-	yAxisID: 'panes',
-	borderColor: "rgba(210, 110, 110, 1)",
-	pointBoarderColor: "rgba(210, 110, 110, 1)",
-	backgroundColor: "rgba(210, 110, 110, 0.4)",
-	pointHoverBackgroundColor: "rgba(210, 110, 110, 1)",
-        pointHoverBorderColor: "rgba(210, 110, 110, 1)",
-	data: panesData
-      },
-      {
-	fill: false,
-        label: 'tortas',
-	yAxisID: 'tortas',
-	borderColor: "rgba(110, 210, 110, 1)",
-	pointBoarderColor: "rgba(110, 210, 110, 1)",
-	backgroundColor: "rgba(110, 210, 110, 0.4)",
-	pointHoverBackgroundColor: "rgba(110, 210, 110, 1)",
-        pointHoverBorderColor: "rgba(110, 210, 110, 1)",
-	data: tortasData
-      },
+      
       {
         fill: false,
         label: 'Humidity',
