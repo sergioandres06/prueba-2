@@ -127,20 +127,6 @@ $(document).ready(function () {
         timeData.shift();
         temperatureData.shift();
       }
-	       	    	
-      if (obj.panes) {
-        panesData.push(obj.panes);
-      }
-      if (panesData.length > maxLen) {
-        panesData.shift();
-      }
-             	    	
-      if (obj.tortas) {
-        tortasData.push(obj.tortas);
-      }
-      if (tortasData.length > maxLen) {
-        tortasData.shift();
-      }
       	    	
       if (obj.humidity) {
         humidityData.push(obj.humidity);
