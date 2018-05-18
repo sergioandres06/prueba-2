@@ -1,4 +1,4 @@
-# prueba-2
+# prueba
 This repo contains code for a web application, which can read temperature & humidity data from IoT hub and show the real-time data in a line chart on the web page.
 
 ## Browser compatible

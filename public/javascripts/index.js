@@ -2,6 +2,8 @@ $(document).ready(function () {
   var timeData = [],
     temperatureData = [],
     humidityData = [];
+    panesData =[];
+    tortasData = [];
     var data = {
     labels: timeData,
     datasets: [
@@ -16,7 +18,6 @@ $(document).ready(function () {
         pointHoverBorderColor: "rgba(250, 0, 0, 1)",
         data: temperatureData
       },
-      
       {
         fill: false,
         label: 'Humidity',
@@ -29,7 +30,32 @@ $(document).ready(function () {
         data: humidityData
       }]
   }
-
+ var data2 = {
+    labels: timeData,
+    datasets: [
+      {
+	fill: false,
+        label: 'panes',
+	yAxisID: 'panes',
+	borderColor: "rgba(210, 110, 110, 1)",
+	pointBoarderColor: "rgba(210, 110, 110, 1)",
+	backgroundColor: "rgba(210, 110, 110, 0.4)",
+	pointHoverBackgroundColor: "rgba(210, 110, 110, 1)",
+        pointHoverBorderColor: "rgba(210, 110, 110, 1)",
+	data: panesData
+      },
+      {
+	fill: false,
+        label: 'tortas',
+	yAxisID: 'tortas',
+	borderColor: "rgba(110, 210, 110, 1)",
+	pointBoarderColor: "rgba(110, 210, 110, 1)",
+	backgroundColor: "rgba(110, 210, 110, 0.4)",
+	pointHoverBackgroundColor: "rgba(110, 210, 110, 1)",
+        pointHoverBorderColor: "rgba(110, 210, 110, 1)",
+	data: tortasData
+      }]
+  }
   var basicOption = {
     title: {
       display: true,
@@ -52,7 +78,35 @@ $(document).ready(function () {
             labelString: 'Humidity(%)',
             display: true
           },
-          position: 'right'
+          position: 'right',
+        }]
+    }
+  }
+var basicOption2 = {
+    title: {
+      display: true,
+      text: 'panes & tortas Real-time Data',
+      fontSize: 36
+    },
+    scales: {
+      yAxes: [
+   {
+        id: 'panes',
+        type: 'linear',
+        scaleLabel: {
+          labelString: 'panes',
+          display: true
+        },
+        position: 'left',
+      },
+      {
+        id: 'tortas',
+        type: 'linear',
+        scaleLabel: {
+          labelString: 'tortas',
+          display: true
+        },
+        position: 'right'
       }]
     }
   }
@@ -64,6 +118,13 @@ $(document).ready(function () {
     type: 'line',
     data: data,
     options: basicOption
+  });
+ var ctx2 = document.getElementById("myChart2").getContext("2d");
+  var optionsNoAnimation2 = { animation: false }
+  var myLineChart = new Chart(ctx2, {
+    type: 'line',
+    data: data2,
+    options: basicOption2
   });
 
   var ws = new WebSocket('wss://' + location.host);
@@ -85,6 +146,20 @@ $(document).ready(function () {
       if (len > maxLen) {
         timeData.shift();
         temperatureData.shift();
+      }
+	       	    	
+      if (obj.panes) {
+        panesData.push(obj.panes);
+      }
+      if (panesData.length > maxLen) {
+        panesData.shift();
+      }
+             	    	
+      if (obj.tortas) {
+        tortasData.push(obj.tortas);
+      }
+      if (tortasData.length > maxLen) {
+        tortasData.shift();
       }
       	    	
       if (obj.humidity) {
