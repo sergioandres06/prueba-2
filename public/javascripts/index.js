@@ -185,6 +185,21 @@ $(document).ready(function ()
     			}
 		try
 			{
+			var obj = JSON.parse(message.data);
+      			if(!obj.time || !obj.temperature) 
+				{
+        			return;
+      				}
+      			timeData.push(obj.time);
+      			temperatureData.push(obj.temperature);
+      			// only keep no more than 50 points in the line chart
+      			const maxLen = 50;
+      			var len = timeData.length;
+      			if (len > maxLen) 
+				{
+        			timeData.shift();
+        			temperatureData.shift();
+      				}
 			if (obj.panes)
 				{
         			panesData.push(obj.panes);
