@@ -6,11 +6,39 @@
     <script src="javascripts/Chart.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="javascripts/index.js" type="text/javascript" charset="utf-8"></script>
     <link href="stylesheets/style.css" rel="stylesheet" />
+    <script type="text/javascript" src="javascripts/gauge.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['gauge']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Label', 'Value'],
+          ['tempertatura', 0]
+        ]);
+
+        var options = {
+          width: 400, height: 200,         
+	  redFrom: 60, redTo: 100,
+          yellowFrom:0, yellowTo: 60,
+          minorTicks: 5
+        };
+
+        var chart = new google.visualization.Gauge(document.getElementById('chart_div'));
+	chart.draw(data, options);
+	setInterval(function(){
+        data.setVAlue(0, 1, temperatureData.shift());
+	},1300);
+      
+     }
+    </script>	         
 </head>
 
 <body>
-	<canvas id="myChart" width="400" height="150"></canvas>
-	<canvas id="myChart2" width="400" height="150"></canvas>
-</body>
-
+	<div id="chart_div" style="width: 400px; height: 120px;float:right;"></div>
+	<canvas id="myChart" width="400" height="120"></canvas>  
+	<canvas id="myChart2" width="400" height="120"></canvas>
+	
+</body>	
 </html>

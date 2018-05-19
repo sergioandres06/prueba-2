@@ -65,7 +65,7 @@ $(document).ready(function ()
 			{
       			display: true,
       			text: 'Temperature & Humidity Real-time Data',
-      			fontSize: 36
+      			fontSize: 20
     			},
     		scales: 
 			{
@@ -98,7 +98,7 @@ $(document).ready(function ()
 			{
       			display: true,
       			text: 'panes & tortas Real-time Data',
-      			fontSize: 36
+      			fontSize: 20
     			},
     		scales: 
 			{
@@ -223,4 +223,5 @@ $(document).ready(function ()
 			console.error(err);
 			}
    		}
+       
 });
