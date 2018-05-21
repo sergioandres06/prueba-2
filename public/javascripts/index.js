@@ -153,7 +153,7 @@ $(document).ready(function ()
   	ws.onmessage = function (message) 
 		{
     		console.log('receive message' + message.data);
-    		try 
+     		try 
 			{
       			var obj = JSON.parse(message.data);
       			if(!obj.time || !obj.temperature) 
@@ -179,6 +179,7 @@ $(document).ready(function ()
         			humidityData.shift();
       				}
       			myLineChart.update();
+			
     			} 
 		catch (err) 
 			{
@@ -187,28 +188,20 @@ $(document).ready(function ()
 		try
 			{
 			var obj = JSON.parse(message.data);
-      			if(!obj.time || !obj.temperature) 
+      			if(!obj.time || !obj.panes) 
 				{
         			return;
       				}
       			timeData.push(obj.time);
-      			temperatureData.push(obj.temperature);
+      			panesData.push(obj.panes);
       			// only keep no more than 50 points in the line chart
       			const maxLen = 50;
       			var len = timeData.length;
       			if (len > maxLen) 
 				{
         			timeData.shift();
-        			temperatureData.shift();
-      				}
-			if (obj.panes)
-				{
-        			panesData.push(obj.panes);
-      				}
-      			if (panesData.length > maxLen) 
-				{
         			panesData.shift();
-      				}             	    	
+      				}			  	    	
       			if (obj.tortas) 
 				{
         			tortasData.push(obj.tortas);
