@@ -1,7 +1,8 @@
   	
 	google.charts.load('current', {'packages':['gauge']});
       	google.charts.setOnLoadCallback(drawChart);
-        var tem = document.getElementById("index").obj
+        var tem = document.getElementById("index").obj.temperature;
+
 	function drawChart() 
 	{	
         	var data = google.visualization.arrayToDataTable([
