@@ -7,36 +7,7 @@
     <script src="javascripts/index.js" type="text/javascript" charset="utf-8"></script>
     <link href="stylesheets/style.css" rel="stylesheet" />
     <script type="text/javascript" src="javascripts/gauge.js" type="text/javascript" charset="utf-8"></script>
-     <script type="text/javascript">
-    
-   
-google.charts.load('current', {'packages':['gauge']});
-      google.charts.setOnLoadCallback(drawChart);
-
-	var val=4;
-	function drawChart() {
-	
-        var data = google.visualization.arrayToDataTable([
-          ['Label', 'Value'],
-          ['tempertatura', 0]
-        ]);
-
-        var options = {
-          width: 400, height: 200,         
-	  redFrom: 60, redTo: 100,
-          yellowFrom:0, yellowTo: 60,
-          minorTicks: 5
-        };
-	
-
-        var chart = new google.visualization.Gauge(document.getElementById('chart_div'));
-	chart.draw(data, options);
-	  setInterval(function() {
-            data.setValue(0, 1, val++);
-          chart.draw(data, options);
-        }, 1300)
-      }
-    </script>
+    <script src="javascripts/gaugedraw.js" type="text/javascript" charset="utf-8"></script>   
                
 </head>
 
