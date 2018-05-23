@@ -1,8 +1,7 @@
   	
 	google.charts.load('current', {'packages':['gauge']});
       	google.charts.setOnLoadCallback(drawChart);
-        var tem = document.getElementById("temperatureData");
-	
+        
 	function drawChart() 
 	{	
         	var data = google.visualization.arrayToDataTable([
@@ -21,7 +20,12 @@
 	chart.draw(data, options);
 		setInterval(function() 
 		{
-	    	data.setValue(0, 1, tem);
+		var JSON=$.ajax({
+		url:'file:///javascripts/index.js',
+		dataType: 'json',
+		async: false}).responseValue;
+		var tem = jQuery.parseJSON(JSON);
+	    	data.setValue(0, 1, tem[0].temperature);
           	chart.draw(data, options);
         	}, 1300)
       	}
