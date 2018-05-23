@@ -1,7 +1,7 @@
   	
 	google.charts.load('current', {'packages':['gauge']});
       	google.charts.setOnLoadCallback(drawChart);
-        var temperatureData=[];
+        var tem=5;
 	function drawChart() 
 	{	
         	var data = google.visualization.arrayToDataTable([
@@ -22,24 +22,10 @@
 		{		
 	    	data.setValue(0, 1, tem);
           	chart.draw(data, options);
-        	}, 1300)
-		try 
-			{
-      			var obj = JSON.parse(message.data);
-      			if(!obj.temperature) 
-				{
-        			return;
-      				}
-      			temperatureData.push(obj.temperature); 
-				{
-        			temperatureData.shift();
-      				}
-      			Chart.update();
-			} 
-		catch (err) 
-				{
-      				console.error(err);
-    				}
-			}
+        	}, 1300);
+	}
+
+		
+
 
       	
