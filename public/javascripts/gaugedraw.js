@@ -6,7 +6,9 @@
 	ws.onmessage = function (message) 
 		{
     		console.log('receive message' + message.data);
-	}
+		var temp =JSON.parse(message.data);
+		var tem = temp[0].temperature
+ 	}
 	function drawChart() 
 	{	
         	var data = google.visualization.arrayToDataTable([
@@ -25,9 +27,9 @@
 	chart.draw(data, options);
 		setInterval(function() 
 		{
-		var temp =JSON.parse(message.data); 
+		 
 				
-	    	data.setValue(0, 1, temp[0].temperature);
+	    	data.setValue(0, 1, tem);
           	chart.draw(data, options);
         	}, 1300);
 	}
