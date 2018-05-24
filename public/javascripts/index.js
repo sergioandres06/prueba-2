@@ -241,7 +241,7 @@ $(document).ready(function ()
 		{
 		 
 				
-	    	data.setValue(0, 1, temperatureData);
+	    	data.setValue(0, 1, temperatureData[0].temperature);
           	chart.draw(data3, options);
         	}, 1300);
 	}
