@@ -1,7 +1,14 @@
   	
 	google.charts.load('current', {'packages':['gauge']});
       	google.charts.setOnLoadCallback(drawChart);
-        var tem=5;
+        var ws = new WebSocket('wss://' + location.host);
+	ws.onmessage = function (message) 
+		{
+    		console.log('receive message' + message.data);
+		
+	var temp = JSON.parse(message.data);
+	var tem = temp['temperature']
+}
 	function drawChart() 
 	{	
         	var data = google.visualization.arrayToDataTable([
