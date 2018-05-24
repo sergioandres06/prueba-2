@@ -1,4 +1,5 @@
-  	
+$(document).ready(function () 
+{  	
 	google.charts.load('current', {'packages':['gauge']});
       	google.charts.setOnLoadCallback(drawChart);
         
@@ -33,7 +34,7 @@
           	chart.draw(data, options);
         	}, 1300);
 	}
-
+});
 		
 
 
