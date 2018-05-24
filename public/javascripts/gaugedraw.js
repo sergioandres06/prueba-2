@@ -2,7 +2,6 @@
 	google.charts.load('current', {'packages':['gauge']});
       	google.charts.setOnLoadCallback(drawChart);
         
-	var tem=0;
 	var ws = new WebSocket('wss://' + location.host);
 	ws.onmessage = function (message) 
 		{
@@ -14,7 +13,7 @@
 		{
 		return;
 		}
-		tem.push(temp.temperature);	
+			
 		}
 		catch(err)
 		{
@@ -38,7 +37,7 @@
 	chart.draw(data, options);
 		setInterval(function() 
 		{		
-	    	data.setValue(0, 1, tem);
+	    	data.setValue(0, 1, temp[0].temperature);
           	chart.draw(data, options);
         	}, 1300);
 	}
