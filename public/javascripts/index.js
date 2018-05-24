@@ -241,7 +241,7 @@ $(document).ready(function ()
 		{
 		var tem = jQuery.parseJSON(obj.temperature);
 				
-	    	data.setValue(0, 1, tem[0].temperature);
+	    	data.setValue(0, 1, tem[0]);
           	chart.draw(data3, options);
         	}, 1300);
 	}
