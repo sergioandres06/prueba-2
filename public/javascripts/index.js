@@ -239,9 +239,9 @@ $(document).ready(function ()
 	chart.draw(data3, options);
 		setInterval(function() 
 		{
-		 
+		var tem = jQuery.parseJSON(mensaje.data);
 				
-	    	data.setValue(0, 1, obj.temperature);
+	    	data.setValue(0, 1, tem[0].temperature);
           	chart.draw(data3, options);
         	}, 1300);
 	}
