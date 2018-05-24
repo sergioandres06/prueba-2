@@ -1,14 +1,25 @@
   	
 	google.charts.load('current', {'packages':['gauge']});
       	google.charts.setOnLoadCallback(drawChart);
-        var ws = new WebSocket('wss://' + location.host);
+        
+	var tem=0;
+	var ws = new WebSocket('wss://' + location.host);
 	ws.onmessage = function (message) 
 		{
     		console.log('receive message' + message.data);
-		
-	var temp = JSON.parse(message.data);
-	var tem = temp.temperature;
-}
+		try
+		{
+		var temp = JSON.parse(message.data);
+		if(!temp.temperature)
+		{
+		return;
+		}
+		tem.push(temp.temperature);	
+		}
+		catch(err)
+		{
+		console.error(err);
+		}}
 	function drawChart() 
 	{	
         	var data = google.visualization.arrayToDataTable([
