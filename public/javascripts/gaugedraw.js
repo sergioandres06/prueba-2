@@ -7,7 +7,7 @@
     		console.log('receive message' + message.data);
 		
 	var temp = JSON.parse(message.data);
-	var tem = temp['temperature']
+	var tem = temp['temperature'];
 }
 	function drawChart() 
 	{	
