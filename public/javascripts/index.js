@@ -239,7 +239,7 @@ $(document).ready(function ()
 	chart.draw(data3, options);
 		setInterval(function() 
 		{
-		var tem = jQuery.parseJSON(message.data);
+		var tem = jQuery.parseJSON(obj.temperature);
 				
 	    	data.setValue(0, 1, tem[0].temperature);
           	chart.draw(data3, options);
