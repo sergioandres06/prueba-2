@@ -220,7 +220,7 @@ $(document).ready(function ()
 
 	google.charts.load('current', {'packages':['gauge']});
       	google.charts.setOnLoadCallback(drawChart);
-        
+        	var t=0;
 	 	var tem=0;
 	function drawChart() 
 		{	
@@ -247,7 +247,7 @@ $(document).ready(function ()
       				}
 			if (obj.temperature) 
 				{
-        			tem = temperatureData[];
+        			tem = temperatureData[t++];
 				var data3 = google.visualization.arrayToDataTable([
           			['Label', 'Value'],
           			['tempertatura', tem]
