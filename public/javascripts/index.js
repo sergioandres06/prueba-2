@@ -221,12 +221,12 @@ $(document).ready(function ()
 	google.charts.load('current', {'packages':['gauge']});
       	google.charts.setOnLoadCallback(drawChart);
         
-	 	
+	 	var tem=0;
 	function drawChart() 
 		{	
         	var data3 = google.visualization.arrayToDataTable([
           	['Label', 'Value'],
-          	['tempertatura', 0]
+          	['tempertatura', tem]
         	]);
 
         	var options = 
@@ -247,7 +247,7 @@ $(document).ready(function ()
       				}
 			if (obj.temperature) 
 				{
-        			data.setValue(0, 1, temperatureData[0]);
+        			tem = temperatureData[0];
       				}
       			
       			Chart.update();
