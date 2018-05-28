@@ -284,7 +284,7 @@ $(document).ready(function ()
           	minorTicks: 5
         	};
         var chart2 = new google.visualization.Gauge(document.getElementById('chart_div2'));
-	chart.draw(data4, options2);
+	chart2.draw(data4, options2);
 		try 
 			{
       			var obj = JSON.parse(message.data);
@@ -299,7 +299,7 @@ $(document).ready(function ()
           			['Label', 'Value'],
           			['tempertatura', tem2]
         			]);
-			chart.draw(data4, options2);
+			chart2.draw(data4, options2);
       				}
 			
     			} 
