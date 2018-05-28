@@ -228,7 +228,8 @@ $(document).ready(function ()
 		{	
         	var data3 = google.visualization.arrayToDataTable([
           	['Label', 'Value'],
-          	['tempertatura', tem]
+          	['p.temperatura', tem],
+		['temperatura',tem2]
         	]);
 
         	var options = 
@@ -249,12 +250,14 @@ $(document).ready(function ()
       				}
 			if (obj.temperature) 
 				{
-        			tem = temperatureData.reduce(function(acumulador, siguienteValor){
+        			tem2 = temperatureData[temperatureData.length-1]
+				tem = temperatureData.reduce(function(acumulador, siguienteValor){
 				return acumulador + siguienteValor;},0);
 				var temp = tem / temperatureData.length;
 				var data3 = google.visualization.arrayToDataTable([
           			['Label', 'Value'],
-          			['p.tempertatura', temp]
+          			['p.temperatura', temp],
+				['temperatura',tem2]
         			]);
 				chart.draw(data3, options);
       				}
@@ -266,49 +269,8 @@ $(document).ready(function ()
     			}
 		}
    		
-	google.charts.load('current', {'packages':['gauge']});
-      	google.charts.setOnLoadCallback(drawChart);
-        	
-	function drawChart() 
-		{	
-        	var data4 = google.visualization.arrayToDataTable([
-          	['Label', 'Value'],
-          	['tempertatura', tem2]
-        	]);
 
-        	var options2 = 
-		{
-          	width: 400, height: 200,         
-	  	redFrom: 60, redTo: 100,
-          	yellowFrom:0, yellowTo: 60,
-          	minorTicks: 5
-        	};
-        var chart2 = new google.visualization.Gauge(document.getElementById('chart_div2'));
-	chart2.draw(data4, options2);
-		try 
-			{
-      			var obj = JSON.parse(message.data);
-      			if(!obj.temperature) 
-				{
-        			return;
-      				}
-			if (obj.temperature) 
-				{
-        			tem2 = temperatureData[temperatureData.length-1] 
-				var data4 = google.visualization.arrayToDataTable([
-          			['Label', 'Value'],
-          			['tempertatura', tem2]
-        			]);
-			chart2.draw(data4, options2);
-      				}
-			
-    			} 
-		catch (err) 
-			{
-      			console.error(err);
-    			}
 	}
-   		}
 		
        
 });
