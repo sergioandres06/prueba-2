@@ -246,7 +246,7 @@ $(document).ready(function ()
         	}, 1300);
 	}
    		}
-
+		alert(tem);
 
        
 });
