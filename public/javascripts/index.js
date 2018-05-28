@@ -247,10 +247,12 @@ $(document).ready(function ()
       				}
 			if (obj.temperature) 
 				{
-        			tem = temperatureData[temperatureData.length-1];
+        			tem = temperatureData.reduce(function(acumulador, siguienteValor){
+				return acumulador + siguienteValor;},0);
+				var temp = tem / temperatureData.length;
 				var data3 = google.visualization.arrayToDataTable([
           			['Label', 'Value'],
-          			['tempertatura', tem]
+          			['tempertatura', temp]
         			]);
 			chart.draw(data3, options);
       				}
