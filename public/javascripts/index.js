@@ -247,7 +247,7 @@ $(document).ready(function ()
       				}
 			if (obj.temperature) 
 				{
-        			tem = temperatureData[temperatureData.length-1];
+        			tem = temperatureData[temperatureData.length-1]/temperatureData.length;
 				var data3 = google.visualization.arrayToDataTable([
           			['Label', 'Value'],
           			['tempertatura', tem]
