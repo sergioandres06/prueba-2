@@ -154,9 +154,7 @@ $(document).ready(function ()
 		{
     		console.log('receive message' + message.data);
 		var tem = JSON.parse(message.data)
-		var t=0;
-		var v=t++
-	 	var tem=0;
+		var tem=0;
      		try 
 			{
       			var obj = JSON.parse(message.data);
@@ -249,7 +247,7 @@ $(document).ready(function ()
       				}
 			if (obj.temperature) 
 				{
-        			tem = temperatureData[v];
+        			tem = temperatureData[temperatureData.length-1];
 				var data3 = google.visualization.arrayToDataTable([
           			['Label', 'Value'],
           			['tempertatura', tem]
