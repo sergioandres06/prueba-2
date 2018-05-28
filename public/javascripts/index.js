@@ -153,6 +153,7 @@ $(document).ready(function ()
   	ws.onmessage = function (message) 
 		{
     		console.log('receive message' + message.data);
+		var tem = JSON.parse(message.data)
      		try 
 			{
       			var obj = JSON.parse(message.data);
@@ -239,14 +240,12 @@ $(document).ready(function ()
 	chart.draw(data3, options);
 		setInterval(function() 
 		{
-		var tem = jQuery.parseJSON(message);
 				
 	    	data.setValue(0, 1, tem[0].temperature);
           	chart.draw(data3, options);
         	}, 1300);
 	}
    		}
-		alert(tem);
-
+		
        
 });
