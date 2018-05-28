@@ -154,6 +154,9 @@ $(document).ready(function ()
 		{
     		console.log('receive message' + message.data);
 		var tem = JSON.parse(message.data)
+		var t=0;
+		var v=t++
+	 	var tem=0;
      		try 
 			{
       			var obj = JSON.parse(message.data);
@@ -220,8 +223,7 @@ $(document).ready(function ()
 
 	google.charts.load('current', {'packages':['gauge']});
       	google.charts.setOnLoadCallback(drawChart);
-        	var t=0;
-	 	var tem=0;
+        	
 	function drawChart() 
 		{	
         	var data3 = google.visualization.arrayToDataTable([
@@ -247,7 +249,7 @@ $(document).ready(function ()
       				}
 			if (obj.temperature) 
 				{
-        			tem = temperatureData[t++];
+        			tem = temperatureData[v];
 				var data3 = google.visualization.arrayToDataTable([
           			['Label', 'Value'],
           			['tempertatura', tem]
