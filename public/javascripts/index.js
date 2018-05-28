@@ -155,6 +155,8 @@ $(document).ready(function ()
     		console.log('receive message' + message.data);
 		var tem = JSON.parse(message.data)
 		var tem=0;
+		var tem2 = JSON.parse(message.data)
+		var tem2=0;
      		try 
 			{
       			var obj = JSON.parse(message.data);
@@ -230,14 +232,14 @@ $(document).ready(function ()
         	]);
 
         	var options = 
-		{
-          	width: 400, height: 200,         
-	  	redFrom: 60, redTo: 100,
-          	yellowFrom:0, yellowTo: 60,
-          	minorTicks: 5
-        	};
-        var chart = new google.visualization.Gauge(document.getElementById('chart_div'));
-	chart.draw(data3, options);
+			{
+          		width: 400, height: 200,         
+	  		redFrom: 60, redTo: 100,
+          		yellowFrom:0, yellowTo: 60,
+          		minorTicks: 5
+        		};
+        	var chart = new google.visualization.Gauge(document.getElementById('chart_div'));
+		chart.draw(data3, options);
 		try 
 			{
       			var obj = JSON.parse(message.data);
@@ -252,9 +254,52 @@ $(document).ready(function ()
 				var temp = tem / temperatureData.length;
 				var data3 = google.visualization.arrayToDataTable([
           			['Label', 'Value'],
-          			['tempertatura', temp]
+          			['p.tempertatura', temp]
         			]);
-			chart.draw(data3, options);
+				chart.draw(data3, options);
+      				}
+			
+    			} 
+		catch (err) 
+			{
+      			console.error(err);
+    			}
+		}
+   		
+	google.charts.load('current', {'packages':['gauge']});
+      	google.charts.setOnLoadCallback(drawChart);
+        	
+	function drawChart() 
+		{	
+        	var data4 = google.visualization.arrayToDataTable([
+          	['Label', 'Value'],
+          	['tempertatura', tem2]
+        	]);
+
+        	var options = 
+		{
+          	width: 400, height: 200,         
+	  	redFrom: 60, redTo: 100,
+          	yellowFrom:0, yellowTo: 60,
+          	minorTicks: 5
+        	};
+        var chart2 = new google.visualization.Gauge(document.getElementById('chart_div2'));
+	chart.draw(data4, options);
+		try 
+			{
+      			var obj = JSON.parse(message.data);
+      			if(!obj.temperature) 
+				{
+        			return;
+      				}
+			if (obj.temperature) 
+				{
+        			tem2 = temperatureData[temperatureData.length-1] 
+				var data4 = google.visualization.arrayToDataTable([
+          			['Label', 'Value'],
+          			['tempertatura', tem2]
+        			]);
+			chart.draw(data4, options);
       				}
 			
     			} 
