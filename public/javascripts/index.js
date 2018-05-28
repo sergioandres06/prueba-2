@@ -238,12 +238,25 @@ $(document).ready(function ()
         	};
         var chart = new google.visualization.Gauge(document.getElementById('chart_div'));
 	chart.draw(data3, options);
-		setInterval(function() 
-		{
-				
-	    	data.setValue(0, 1, tem[0].temperature);
-          	chart.draw(data3, options);
-        	}, 1300);
+		try 
+			{
+      			var obj = JSON.parse(message.data);
+      			if(!obj.temperature) 
+				{
+        			return;
+      				}
+			if (obj.temperature) 
+				{
+        			data.setValue(0, 1, temperatureData[0]);
+      				}
+      			
+      			Chart.update();
+			
+    			} 
+		catch (err) 
+			{
+      			console.error(err);
+    			}
 	}
    		}
 		
